@@ -23,7 +23,7 @@ public class HelloWorldServlet extends HttpServlet {
       String sql = "select name from test_1";
       ResultSet rs = statement.executeQuery(sql);
       while (rs.next()) {
-        System.out.println(rs.getString("name234"));
+        System.out.println(rs.getString("name"));
       }
       writer.write("<h2>Hello world from servlet 3.0</h2>");
     } catch (Exception e) {

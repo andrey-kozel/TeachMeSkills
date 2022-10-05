@@ -12,16 +12,15 @@ import javax.servlet.annotation.WebListener;
 public class MyServletContextListener implements ServletContextListener {
 
   @Override
-  public void contextInitialized(ServletContextEvent sce) {
-    System.out.println("(Context listener) Start. Caller IP address is " + sce.getServletContext().getServerInfo());
-    String dbName = "jdbc:postgresql://demo-postgres:5432/postgres";
-    String dbDriver = "org.postgresql.Driver";
-    String userName = "postgres";
-    String password = "postgres";
+  public void contextInitialized(final ServletContextEvent sce) {
+    final String dbDriver = "org.postgresql.Driver";
+    final String username = sce.getServletContext().getInitParameter("db_user");
+    final String password = sce.getServletContext().getInitParameter("db_password");
+    final String dbUrl = sce.getServletContext().getInitParameter("db_url");
 
     try {
       Class.forName(dbDriver);
-      Connection con = DriverManager.getConnection(dbName, userName, password);
+      final Connection con = DriverManager.getConnection(dbUrl, username, password);
       sce.getServletContext().setAttribute("connection", con);
     } catch (Exception e) {
       e.printStackTrace();
@@ -30,7 +29,11 @@ public class MyServletContextListener implements ServletContextListener {
 
   @Override
   public void contextDestroyed(ServletContextEvent sce) {
-    System.out.println("(Context listener) Finish. Caller IP address is " + sce.getServletContext().getServerInfo());
-
+    try {
+      final Connection connection = (Connection) sce.getServletContext().getAttribute("connection");
+      connection.close();
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
   }
 }

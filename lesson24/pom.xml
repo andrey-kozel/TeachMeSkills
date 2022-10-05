@@ -11,6 +11,7 @@
 	</parent>
 
 	<artifactId>lesson24</artifactId>
+	<packaging>war</packaging>
 
 	<properties>
 		<maven.compiler.source>17</maven.compiler.source>

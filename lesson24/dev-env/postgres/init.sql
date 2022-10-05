@@ -1,6 +1,6 @@
 CREATE TABLE users
 (
-    name VARCHAR NOT_NULL
+    name VARCHAR NOT NULL UNIQUE
 );
 
 INSERT INTO users (name)

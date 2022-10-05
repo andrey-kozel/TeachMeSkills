@@ -8,6 +8,10 @@ import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 
+import com.teachmeskills.repository.JdbcUserRepository;
+import com.teachmeskills.repository.UserRepository;
+import com.teachmeskills.service.UserService;
+
 @WebListener
 public class DependencyInitializationContextListener implements ServletContextListener {
 
@@ -21,7 +25,9 @@ public class DependencyInitializationContextListener implements ServletContextLi
     try {
       Class.forName(dbDriver);
       final Connection con = DriverManager.getConnection(dbUrl, username, password);
-      sce.getServletContext().setAttribute("connection", con);
+      UserRepository repository = new JdbcUserRepository(con);
+      UserService userService = new UserService(repository);
+      sce.getServletContext().setAttribute("userService", userService);
     } catch (Exception e) {
       e.printStackTrace();
     }

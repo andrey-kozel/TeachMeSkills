@@ -1,7 +1,6 @@
 package com.teachmeskills.filter;
 
 import java.io.IOException;
-import java.util.HashMap;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;

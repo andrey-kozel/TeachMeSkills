@@ -20,7 +20,7 @@ public class HelloWorldServlet extends HttpServlet {
     try (PrintWriter writer = resp.getWriter()) {
       Connection connection = (Connection) getServletContext().getAttribute("connection");
       Statement statement = connection.createStatement();
-      String sql = "select name from test_1";
+      String sql = "select name from users";
       ResultSet rs = statement.executeQuery(sql);
       while (rs.next()) {
         System.out.println(rs.getString("name"));

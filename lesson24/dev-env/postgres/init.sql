@@ -1,5 +1,7 @@
-CREATE TABLE test_1(
-    name VARCHAR
+CREATE TABLE users
+(
+    name VARCHAR NOT_NULL
 );
 
-INSERT INTO test_1 (name) VALUES ('Andrey');
+INSERT INTO users (name)
+VALUES ('Andrey');

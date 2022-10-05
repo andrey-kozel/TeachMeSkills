@@ -4,19 +4,17 @@
 		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>org.teachmeskills</groupId>
-	<artifactId>examples</artifactId>
-	<name>Examples</name>
-	<version>1.0-SNAPSHOT</version>
-	<packaging>pom</packaging>
+	<parent>
+		<groupId>org.teachmeskills</groupId>
+		<artifactId>examples</artifactId>
+		<version>1.0-SNAPSHOT</version>
+	</parent>
 
-	<modules>
-		<module>lesson24</module>
-	</modules>
+	<artifactId>lesson24</artifactId>
 
 	<properties>
-		<maven.compiler.source>11</maven.compiler.source>
-		<maven.compiler.target>11</maven.compiler.target>
+		<maven.compiler.source>17</maven.compiler.source>
+		<maven.compiler.target>17</maven.compiler.target>
 	</properties>
 
 </project>

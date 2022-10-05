@@ -17,5 +17,5 @@ docker run --rm \
     -e POSTGRES_USER=postgres \
     -e POSTGRES_PASSWORD=postgres \
     -p 15432:5432 \
-    -v "/Users/macbookpro/IdeaProjects/TeachMeSkills/lesson23/target/lesson23-1.0-SNAPSHOT.war:/usr/local/tomcat/webapps/servlet.war" \
+    -v "/Users/macbookpro/IdeaProjects/TeachMeSkills/lesson24/target/lesson23-1.0-SNAPSHOT.war:/usr/local/tomcat/webapps/servlet.war" \
     postgres:13.4-alpine

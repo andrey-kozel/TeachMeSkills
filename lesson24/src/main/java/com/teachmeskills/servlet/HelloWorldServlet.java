@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
 
 import javax.servlet.annotation.WebServlet;
@@ -27,7 +26,6 @@ public class HelloWorldServlet extends HttpServlet {
         System.out.println(rs.getString("name234"));
       }
       writer.write("<h2>Hello world from servlet 3.0</h2>");
-      writer.write(System.getenv("HELLO"));
     } catch (Exception e) {
       e.printStackTrace();
     }

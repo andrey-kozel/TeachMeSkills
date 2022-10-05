@@ -16,7 +16,6 @@ public class AnnotationConfiguredHelloWorld extends HttpServlet {
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     try (PrintWriter writer = resp.getWriter()) {
       writer.write("Hello world from annotated servlet 3.0");
-      writer.write(System.getenv("HELLO"));
       writer.write(req.getPathInfo());
     };
   }

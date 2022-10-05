@@ -3,19 +3,20 @@
 		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-
 	<parent>
-		<groupId>org.teachmeskills</groupId>
 		<artifactId>examples</artifactId>
+		<groupId>org.teachmeskills</groupId>
 		<version>1.0-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>lesson24</artifactId>
+	<artifactId>lesson23</artifactId>
+	<packaging>war</packaging>
 
 	<properties>
 		<maven.compiler.source>17</maven.compiler.source>
 		<maven.compiler.target>17</maven.compiler.target>
 	</properties>
+
 
 	<dependencies>
 		<dependency>
@@ -23,11 +24,6 @@
 			<artifactId>javax.servlet-api</artifactId>
 			<version>4.0.1</version>
 			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.postgresql</groupId>
-			<artifactId>postgresql</artifactId>
-			<version>42.5.0</version>
 		</dependency>
 	</dependencies>
 

@@ -1,4 +1,0 @@
-FROM tomcat:9.0.53-jdk11-openjdk
-RUN mv /usr/local/tomcat/webapps.dist/* /usr/local/tomcat/webapps
-COPY ./dev-env/tomcat/context.xml /usr/local/tomcat/webapps/manager/META-INF/context.xml
-COPY ./dev-env/tomcat/tomcat-users.xml /usr/local/tomcat/conf/tomcat-users.xml

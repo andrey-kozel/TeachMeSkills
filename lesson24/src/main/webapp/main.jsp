@@ -11,7 +11,10 @@
     <%="Get list of users".toUpperCase()%>
 </a>
 <p>
-    Example text
+    Red text
+</p>
+<p class="blue_text">
+    Blue text
 </p>
 </body>
 </html>

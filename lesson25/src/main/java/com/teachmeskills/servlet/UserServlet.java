@@ -46,6 +46,7 @@ public class UserServlet extends HttpServlet {
       resp.sendRedirect("users?error=" + ex.getMessage());
       return;
     }
+    req.getSession().setAttribute("loggedIn", true);
     resp.sendRedirect("users");
   }
 }

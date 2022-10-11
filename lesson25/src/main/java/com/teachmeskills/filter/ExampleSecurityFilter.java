@@ -17,11 +17,11 @@ public class ExampleSecurityFilter implements Filter {
   public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
     throws IOException, ServletException {
     final HttpServletRequest httpRequest = (HttpServletRequest) request;
-//    final Boolean loggedIn = (Boolean) httpRequest.getSession().getAttribute("loggedIn");
-//    if (loggedIn == null || !loggedIn) {
-//      request.getServletContext().getRequestDispatcher("/accessDenied.jsp").forward(request, response);
-//      return;
-//    }
+    final Boolean loggedIn = (Boolean) httpRequest.getSession().getAttribute("loggedIn");
+    if (loggedIn == null || !loggedIn) {
+      request.getServletContext().getRequestDispatcher("/accessDenied.jsp").forward(request, response);
+      return;
+    }
     chain.doFilter(request, response);
   }
 }

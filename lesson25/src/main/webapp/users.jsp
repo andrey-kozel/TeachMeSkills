@@ -78,7 +78,7 @@
                                     <c:out value="${user.password}" />
                                 </td>
                                 <td>
-                                    <f:formatDate value="${user.createdAt}" pattern="YYYY-MM-dd" />
+                                    <f:formatDate value="${user.createdAt}" pattern="YYYY-MM-dd HH:mm:ss" />
                                 </td>
                             </tr>
                         </c:forEach>

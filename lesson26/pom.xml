@@ -149,7 +149,7 @@
 					<effort>Max</effort>
 					<threshold>Low</threshold>
 					<failOnError>true</failOnError>
-<!--					<includeFilterFiles>codequality/spotbug.xml</includeFilterFiles>-->
+					<includeFilterFiles>codequality/spotbug.xml</includeFilterFiles>
 				</configuration>
 				<dependencies>
 					<dependency>

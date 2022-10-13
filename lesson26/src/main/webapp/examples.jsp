@@ -11,6 +11,12 @@
     <title>Title</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" />
 </head>
+<style>
+    div {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+</style>
 <body>
 <div class="container-fluid">
     <div class="row">

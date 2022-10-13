@@ -6,8 +6,6 @@ import java.sql.SQLException;
 import java.util.List;
 
 import com.teachmeskills.model.User;
-import org.assertj.core.api.Assertions;
-import org.junit.ClassRule;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -18,9 +16,8 @@ import org.testcontainers.containers.PostgreSQLContainer;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @TestInstance(Lifecycle.PER_CLASS)
-class JdbcUserRepositoryTests {
+class JdbcUserRepositoryTest {
 
-  @ClassRule
   final GenericContainer container = new PostgreSQLContainer("postgres:13.4")
     .withUsername("postgres")
     .withPassword("postgres")

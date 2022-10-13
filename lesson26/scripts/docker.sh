@@ -23,3 +23,6 @@ docker run --rm \
     -p 15432:5432 \
     -v "/Users/macbookpro/IdeaProjects/TeachMeSkills/lesson26/dev-env/postgres/init.sql:/docker-entrypoint-initdb.d/1-init.sql" \
     postgres:13.4-alpine
+
+docker-compose up -d
+docker compose up -d

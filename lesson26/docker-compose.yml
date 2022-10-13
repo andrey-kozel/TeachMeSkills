@@ -13,7 +13,7 @@ services:
       - "9000:8000"
     entrypoint: "/usr/local/tomcat/bin/catalina.sh jpda run"
     depends_on:
-      - postgres
+      - "postgres"
   postgres:
     image: "postgres:13.4-alpine"
     container_name: "demo-postgres"

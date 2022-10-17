@@ -1,4 +1,4 @@
-package com.example.lesson27.model;
+package com.example.lesson27.container;
 
 import lombok.Builder;
 import lombok.Value;

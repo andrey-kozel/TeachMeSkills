@@ -1,5 +1,7 @@
 package com.example.lesson27.model;
 
+import com.example.lesson27.container.ContainerManager;
+import com.example.lesson27.container.Result;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

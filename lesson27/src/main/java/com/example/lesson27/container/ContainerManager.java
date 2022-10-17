@@ -1,4 +1,4 @@
-package com.example.lesson27.model;
+package com.example.lesson27.container;
 
 import lombok.Value;
 import lombok.extern.slf4j.Slf4j;

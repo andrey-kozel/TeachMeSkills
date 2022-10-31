@@ -1,0 +1,32 @@
+version: "3"
+services:
+  tomcat1:
+    image: "tomcat:9.0.53-jdk17-corretto"
+    container_name: "tomcat1"
+    environment:
+      JPDA_TRANSPORT: "dt_socket"
+    volumes:
+      - "/Users/macbookpro/IdeaProjects/TeachMeSkills/lesson30/target/lesson30-1.0-SNAPSHOT.war:/usr/local/tomcat/webapps/servlet.war"
+    ports:
+      - "9090:8080"
+
+  tomcat2:
+    image: "tomcat:9.0.53-jdk17-corretto"
+    container_name: "tomcat2"
+    environment:
+      JPDA_TRANSPORT: "dt_socket"
+    volumes:
+      - "./target/lesson30-1.0-SNAPSHOT.war:/usr/local/tomcat/webapps/servlet.war"
+    ports:
+      - "7070:8080"
+
+  postgres:
+    image: "postgres:13.4-alpine"
+    container_name: "demo-postgres"
+    environment:
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "postgres"
+      POSTGRES_DB: "social_network"
+    ports:
+      - "35432:5432"
+

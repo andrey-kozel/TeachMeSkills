@@ -43,7 +43,7 @@ public class User implements Cloneable {
 
   @Override
   public String toString() {
-    return "User{" +
+    return "Userаываываыавsdfsdfsdfsdfsы{" +
       "name='" + name + '\'' +
       ", age=" + age +
       ", male=" + male +

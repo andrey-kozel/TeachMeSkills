@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="org.postgresql.Driver"/>
+		<property name="url" value="jdbc:postgresql://demo-postgres:5432/postgres"/>
+		<property name="username" value="postgres"/>
+		<property name="password" value="postgres"/>
+	</bean>
+
+	<bean id="connection" factory-bean="dataSource" factory-method="getConnection"/>
+
+	<bean id="userRepository" class="com.teachmeskills.repository.JdbcUserRepository">
+		<constructor-arg index="0" ref="connection"/>
+	</bean>
+
+	<bean id="userService" class="com.teachmeskills.service.UserService">
+		<constructor-arg index="0" ref="userRepository"/>
+	</bean>
+
+</beans>

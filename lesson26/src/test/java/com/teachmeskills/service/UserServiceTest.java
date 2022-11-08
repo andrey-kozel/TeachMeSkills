@@ -4,6 +4,7 @@ import java.util.Optional;
 
 import com.teachmeskills.model.User;
 import com.teachmeskills.repository.UserRepository;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -16,6 +17,7 @@ import static org.mockito.BDDMockito.given;
 import static org.mockito.BDDMockito.then;
 import static org.mockito.Mockito.mock;
 
+@Disabled
 @ExtendWith(MockitoExtension.class)
 class UserServiceTest {
 

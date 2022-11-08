@@ -7,6 +7,7 @@ import java.util.List;
 
 import com.teachmeskills.model.User;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestInstance.Lifecycle;
@@ -15,6 +16,7 @@ import org.testcontainers.containers.PostgreSQLContainer;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+@Disabled
 @TestInstance(Lifecycle.PER_CLASS)
 class JdbcUserRepositoryTest {
 

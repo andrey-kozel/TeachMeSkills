@@ -5,6 +5,7 @@ import java.util.List;
 import com.example.mvc.dto.CreateUserDto;
 import com.example.mvc.model.User;
 import com.example.mvc.service.UserService;
+import com.example.mvc.session.AuthContext;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -20,6 +21,7 @@ import org.springframework.web.servlet.view.RedirectView;
 public class UserController {
 
   private final UserService userService;
+  private final AuthContext authContext;
 
   @GetMapping
   public String getUsers(final ModelMap model) {
@@ -31,6 +33,7 @@ public class UserController {
   @PostMapping(consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
   public RedirectView createUser(final CreateUserDto dto) {
     userService.createUser(dto.getName(), dto.getPassword(), dto.getRole());
+    authContext.setAuthorized(true);
     return new RedirectView("users");
   }
 

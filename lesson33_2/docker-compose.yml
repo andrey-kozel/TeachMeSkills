@@ -1,0 +1,26 @@
+version: "3"
+services:
+  tomcat:
+    image: "tomcat:9.0.53-jdk17-corretto"
+    container_name: "tomcat"
+    environment:
+      JPDA_ADDRESS: "*:8000"
+      JPDA_TRANSPORT: "dt_socket"
+    volumes:
+      - "./target/lesson33_2-1.0-SNAPSHOT.war:/usr/local/tomcat/webapps/servlet.war"
+    ports:
+      - "8080:8080"
+      - "9000:8000"
+    entrypoint: "/usr/local/tomcat/bin/catalina.sh jpda run"
+    depends_on:
+      - "postgres"
+  postgres:
+    image: "postgres:13.4-alpine"
+    container_name: "demo-postgres"
+    environment:
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "postgres"
+    ports:
+      - "35432:5432"
+    volumes:
+      - "./dev-env/postgres/init.sql:/docker-entrypoint-initdb.d/1-init.sql"

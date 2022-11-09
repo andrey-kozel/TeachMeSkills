@@ -1,15 +1,31 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 			 xmlns:context="http://www.springframework.org/schema/context"
 			 xmlns:mvc="http://www.springframework.org/schema/mvc"
-			 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+			 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
 			 xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
     http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
-    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
 
 	<context:component-scan base-package="com.example.mvc"/>
 	<context:property-placeholder location="classpath:/application.properties"/>
 
 	<mvc:annotation-driven/>
+
+	<mvc:view-controller path="/examples" view-name="examples"/>
+	<mvc:view-controller path="/access-denied" view-name="accessDenied"/>
+
+	<bean id="authContext" class="com.example.mvc.session.AuthContext" scope="session">
+		<aop:scoped-proxy/>
+	</bean>
+
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/examples"/>
+			<bean id="loggerInterceptor" class="com.example.mvc.interceptor.AuthInterceptor">
+				<constructor-arg index="0" ref="authContext"/>
+			</bean>
+		</mvc:interceptor>
+	</mvc:interceptors>
 
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">

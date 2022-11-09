@@ -17,7 +17,7 @@ public class AuthInterceptor implements HandlerInterceptor {
     if (authContext.isAuthorized()) {
       return true;
     }
-    response.sendRedirect("accessDenied");
+    response.sendRedirect("access-denied");
     return false;
   }
 }

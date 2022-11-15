@@ -28,10 +28,10 @@ public class UserController {
   private final AuthContext authContext;
 
   @GetMapping
-  public String getUsers(final Model model, final CreateUserDto dto) {
+  public String getUsers(final Model model) {
     final List<User> users = userService.findUsers();
     model.addAttribute("users", users);
-    model.addAttribute("dto", dto);
+    model.addAttribute("dto", new CreateUserDto());
     return "users";
   }
 

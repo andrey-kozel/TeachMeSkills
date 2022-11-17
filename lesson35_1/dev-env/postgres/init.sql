@@ -1,13 +1,13 @@
 CREATE TABLE organization
 (
-    id         BIGSERIAL NOT NULL UNIQUE,
-    name       VARCHAR   NOT NULL UNIQUE,
+    id         BIGSERIAL NOT NULL PRIMARY KEY,
+    name       VARCHAR   NOT NULL,
     created_at TIMESTAMP NOT NULL DEFAULT now()
 );
 
 CREATE TABLE employee
 (
-    id              BIGSERIAL NOT NULL UNIQUE,
+    id              BIGSERIAL NOT NULL PRIMARY KEY,
     name            VARCHAR   NOT NULL,
     last_name       VARCHAR   NOT NULL,
     organization_id BIGINT    NOT NULL REFERENCES organization (id)
@@ -15,7 +15,7 @@ CREATE TABLE employee
 
 CREATE TABLE working_place
 (
-    id               BIGSERIAL NOT NULL,
+    id               BIGSERIAL NOT NULL PRIMARY KEY,
     inventory_number TEXT      NOT NULL,
     employee_id      BIGINT    NOT NULL REFERENCES employee (id)
 );
@@ -42,4 +42,5 @@ VALUES ('Andrey3', 'K', 2),
 
 INSERT INTO working_place (inventory_number, employee_id)
 VALUES ('CP-3', 3),
-       ('CP-4', 4);
+       ('CP-4', 4),
+       ('CP-5', 5);

@@ -19,16 +19,14 @@ import org.hibernate.query.criteria.HibernateCriteriaBuilder;
 
 public class OrganizationRepository {
 
-  private final EntityManager entityManager;
   private final Session session;
 
   public OrganizationRepository(final SessionFactory sessionFactory) {
-    entityManager = sessionFactory.createEntityManager();
     session = sessionFactory.openSession();
   }
 
   public Organization get(Long id) {
-    return entityManager.find(Organization.class, id);
+    return session.find(Organization.class, id);
   }
 
   public List<Organization> getAll() {
@@ -72,9 +70,9 @@ public class OrganizationRepository {
   }
 
   public void save(Organization organization) {
-    entityManager.getTransaction().begin();
-    entityManager.persist(organization);
-    entityManager.getTransaction().commit();
+    session.getTransaction().begin();
+    session.persist(organization);
+    session.getTransaction().commit();
   }
 
 }

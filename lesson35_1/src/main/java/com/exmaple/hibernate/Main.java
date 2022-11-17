@@ -19,6 +19,7 @@ public class Main {
       System.out.println(repository.getEmployees(2L));
       System.out.println(repository.getEmployeesByLastName());
       System.out.println(repository.getWorkingPlaces("Andrey1"));
+      System.out.println(repository.getWorkingPlaces(null));
 
       final Organization organization = new Organization();
       organization.setName("Name9");
@@ -31,7 +32,7 @@ public class Main {
       employee.setName("Name");
       employee.setLastName("LastName");
       employee.setOrganization(organization2);
-      organization.setEmployees(List.of(employee));
+      organization2.setEmployees(List.of(employee));
       WorkingPlace workingPlace = new WorkingPlace();
       workingPlace.setInventoryNumber("number");
       workingPlace.setEmployee(employee);

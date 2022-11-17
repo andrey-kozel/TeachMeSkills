@@ -1,15 +1,11 @@
 package com.exmaple.springboot.repository;
 
-import java.util.List;
 import java.util.Optional;
 
 import com.exmaple.springboot.model.User;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface UserRepository {
+public interface UserRepository extends JpaRepository<User, Long> {
 
-  List<User> findUsers();
-
-  Optional<User> getUser(String name);
-
-  void createUser(String name, String password, String role);
+  Optional<User> findUserByName(String name);
 }

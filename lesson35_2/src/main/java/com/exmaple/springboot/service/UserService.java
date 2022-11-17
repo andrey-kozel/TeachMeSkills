@@ -14,14 +14,15 @@ public class UserService {
   private final UserRepository userRepository;
 
   public List<User> findUsers() {
-    return userRepository.findUsers();
+    return userRepository.findAll();
   }
 
   public void createUser(String name, String password, String role) {
-    if (userRepository.getUser(name).isPresent()) {
+    if (userRepository.findUserByName(name).isPresent()) {
       throw new RuntimeException("User already exists");
     }
 
-    userRepository.createUser(name, password, role);
+    final User user = new User(name, password, role);
+    userRepository.save(user);
   }
 }

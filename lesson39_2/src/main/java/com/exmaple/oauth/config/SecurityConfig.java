@@ -1,7 +1,7 @@
 package com.exmaple.oauth.config;
 
 import com.exmaple.oauth.config.filter.JwtTokenFilter;
-import com.exmaple.oauth.config.handler.OAuth2AuthenticationSuccessHandler;
+import com.exmaple.oauth.config.handler.SuccessAuthHandler;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,7 +18,7 @@ import org.springframework.security.web.authentication.HttpStatusEntryPoint;
 @RequiredArgsConstructor
 public class SecurityConfig {
 
-  private final OAuth2AuthenticationSuccessHandler successHandler;
+  private final SuccessAuthHandler successHandler;
   private final JwtTokenFilter jwtTokenFilter;
 
   @Bean

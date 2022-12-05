@@ -4,6 +4,8 @@ import javax.validation.Valid;
 
 import com.exmaple.test.dto.UpdateUserDto;
 import com.exmaple.test.dto.UserDto;
+import com.exmaple.test.service.UserService;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
@@ -21,23 +23,20 @@ import org.springframework.web.bind.annotation.RestController;
 @Validated
 @RestController
 @RequestMapping("/api/v1/users")
+@RequiredArgsConstructor
 public class UserController {
+
+  private final UserService userService;
 
   @GetMapping("/{userId}")
   public UserDto get(@PathVariable final Long userId) {
-    log.info("Get user. Id=[{}]", userId);
-    return UserDto.builder()
-      .id(userId)
-      .firstName("First")
-      .lastName("Last")
-      .password("Pass")
-      .build();
+    return userService.get(userId);
   }
 
   @PostMapping
   @ResponseStatus(HttpStatus.ACCEPTED)
   public void save(@Valid @RequestBody final UpdateUserDto dto) {
-    log.info("Create user. Dto=[{}]", dto);
+    userService.save(dto);
   }
 
   @PutMapping("/{userId}")
@@ -46,13 +45,13 @@ public class UserController {
     @PathVariable final Long userId,
     @Valid @RequestBody final UpdateUserDto dto
   ) {
-    log.info("Update user. Id=[{}] Dto=[{}]", userId, dto);
+    userService.update(userId, dto);
   }
 
   @DeleteMapping("/{userId}")
   @ResponseStatus(HttpStatus.ACCEPTED)
   public void delete(@PathVariable final Long userId) {
-    log.info("Delete user. Id=[{}]", userId);
+    userService.delete(userId);
   }
 
 }

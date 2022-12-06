@@ -4,8 +4,11 @@ import javax.validation.Valid;
 
 import com.example.swagger.dto.UpdateUserDto;
 import com.example.swagger.dto.UserDto;
+import com.example.swagger.service.UserService;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,17 +24,15 @@ import org.springframework.web.bind.annotation.RestController;
 @Validated
 @RestController
 @RequestMapping("/api/v1/users")
+@RequiredArgsConstructor
 public class UserController {
 
-  @GetMapping("/{userId}")
+  private final UserService userService;
+
+  @GetMapping(value = "/{userId}", produces = MediaType.APPLICATION_JSON_VALUE)
   public UserDto get(@PathVariable final Long userId) {
     log.info("Get user. Id=[{}]", userId);
-    return UserDto.builder()
-      .id(userId)
-      .firstName("First")
-      .lastName("Last")
-      .password("Pass")
-      .build();
+    return userService.get(userId);
   }
 
   @PostMapping

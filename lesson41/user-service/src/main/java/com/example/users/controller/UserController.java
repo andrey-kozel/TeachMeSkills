@@ -9,6 +9,7 @@ import com.example.users.model.User;
 import com.example.users.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -29,7 +30,7 @@ public class UserController {
   }
 
   @RequestMapping(method = RequestMethod.POST, value = "/verify")
-  public VerifyResultDto verifyUser(final VerifyUserDto request) {
+  public VerifyResultDto verifyUser(@RequestBody final VerifyUserDto request) {
     final boolean isValid = userService.verify(request.getLogin(), request.getPassword());
 
     return VerifyResultDto.builder()
@@ -39,7 +40,7 @@ public class UserController {
   }
 
   @RequestMapping(method = RequestMethod.POST)
-  public AppUserDto saveUser(final CreateUserDto request) {
+  public AppUserDto saveUser(@RequestBody final CreateUserDto request) {
     final User user = userService.save(request.getLogin(), request.getPassword());
 
     return userConverter.toDto(user);

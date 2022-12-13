@@ -10,4 +10,4 @@ feign:
 
 services:
   user:
-    url: 'http://localhost:'
+    url: 'http://localhost:9091'

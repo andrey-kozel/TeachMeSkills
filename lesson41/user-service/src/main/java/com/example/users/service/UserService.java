@@ -27,10 +27,14 @@ public class UserService {
   }
 
   public User save(final String login, final String password) {
-    return User.builder()
+    final User user = User.builder()
       .username(login)
       .password(password)
       .id(idSequence.incrementAndGet())
       .build();
+
+    users.add(user);
+
+    return user;
   }
 }

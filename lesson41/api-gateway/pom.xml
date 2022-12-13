@@ -20,6 +20,7 @@
 		<lombok-mapstruct.version>0.2.0</lombok-mapstruct.version>
 		<org.mapstruct.version>1.4.2.Final</org.mapstruct.version>
 		<feign.httpclient>11.8</feign.httpclient>
+		<jib.maven.plugin.version>3.3.1</jib.maven.plugin.version>
 	</properties>
 
 	<dependencies>
@@ -125,6 +126,34 @@
 						<arg>-Amapstruct.defaultComponentModel=spring</arg>
 						<arg>-Amapstruct.injectionStrategy=constructor</arg>
 					</compilerArgs>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>com.google.cloud.tools</groupId>
+				<artifactId>jib-maven-plugin</artifactId>
+				<version>${jib.maven.plugin.version}</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>dockerBuild</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<from>
+						<image>openjdk:17-bullseye</image>
+					</from>
+					<to>
+						<image>tms-api-gateway</image>
+						<tags>
+							<tag>latest</tag>
+						</tags>
+					</to>
+					<container>
+						<creationTime>USE_CURRENT_TIMESTAMP</creationTime>
+					</container>
 				</configuration>
 			</plugin>
 		</plugins>

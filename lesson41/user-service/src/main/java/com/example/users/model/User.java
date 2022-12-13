@@ -1,11 +1,11 @@
-package com.exmaple.security.model;
+package com.example.users.model;
 
 import lombok.Builder;
 import lombok.Value;
 
-@Builder
 @Value
-public class AppUser {
+@Builder
+public class User {
 
   long id;
   String username;

@@ -1,13 +1,14 @@
 package com.exmaple.security.controller;
 
+import com.exmaple.security.client.dto.AppUserDto;
+import com.exmaple.security.client.dto.VerifyResultDto;
 import com.exmaple.security.config.jwt.Jwt;
 import com.exmaple.security.converter.UserConverter;
 import com.exmaple.security.dto.AuthResultDto;
 import com.exmaple.security.dto.CredentialsDto;
-import com.exmaple.security.dto.UserDto;
-import com.exmaple.security.model.AppUser;
 import com.exmaple.security.service.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,25 +27,31 @@ public class UserController {
   private final Jwt jwt;
 
   @PostMapping("/registration")
-  public UserDto registerUser(@RequestBody final CredentialsDto credentials) {
-    final AppUser user = userConverter.fromDto(credentials);
-    final AppUser saved = userService.saveUser(user);
-    return userConverter.toDto(saved);
+  public AppUserDto registerUser(@RequestBody final CredentialsDto credentials) {
+    final AppUserDto user = userConverter.fromDto(credentials);
+    return userService.saveUser(user);
   }
 
   @PostMapping("/auth")
-  public AuthResultDto authorize(@RequestBody final CredentialsDto credentials) {
-    AppUser user = userService.verifyUser(credentials.getUsername(), credentials.getPassword());
+  public ResponseEntity authorize(@RequestBody final CredentialsDto credentials) {
+    final VerifyResultDto result = userService.verifyUser(credentials.getUsername(), credentials.getPassword());
 
-    String token = jwt.generateToken(user.getUsername());
-    return new AuthResultDto(token);
+    if (!result.isValid()) {
+      return ResponseEntity
+        .badRequest()
+        .body("Invalid credentials");
+    }
+
+    final String token = jwt.generateToken(credentials.getUsername());
+
+    return ResponseEntity
+      .ok(new AuthResultDto(token));
   }
 
   @GetMapping("/me")
-  public UserDto getCurrenUser() {
+  public AppUserDto getCurrenUser() {
     final User authorized = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-    final AppUser user = userService.getUser(authorized.getUsername());
-    return userConverter.toDto(user);
+    return userService.getUser(authorized.getUsername());
   }
 
 }

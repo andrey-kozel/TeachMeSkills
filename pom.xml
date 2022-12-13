@@ -36,6 +36,10 @@
 		<module>lesson39_2</module>
 		<module>lesson39_3</module>
 		<module>lesson39_4</module>
+		<module>lesson41/api-gateway</module>
+		<module>lesson41/worker</module>
+		<module>lesson41/command-service</module>
+		<module>lesson41/user-service</module>
 	</modules>
 
 	<properties>

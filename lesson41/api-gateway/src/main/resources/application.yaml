@@ -1,0 +1,13 @@
+server:
+  port: 9090
+
+feign:
+  client:
+    config:
+      domain:
+        connectTimeout: 5000
+        readTimeout: 3000
+
+services:
+  user:
+    url: 'http://localhost:'

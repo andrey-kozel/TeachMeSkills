@@ -12,6 +12,6 @@ public class QueueClient {
   private final AmazonSQS sqs;
 
   public void sendHelloMessage() {
-    sqs.sendMessage(new SendMessageRequest("http://localhost:4566/000000000000/test", "Hello!"));
+    sqs.sendMessage(new SendMessageRequest("http://localhost:4566/000000000000/test2", "Hello!"));
   }
 }

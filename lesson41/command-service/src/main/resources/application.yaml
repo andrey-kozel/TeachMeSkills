@@ -5,3 +5,6 @@ aws:
   credentials:
     access-key: "key"
     secret-key: "secret"
+
+server:
+  port: 9092

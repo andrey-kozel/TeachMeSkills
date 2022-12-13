@@ -11,3 +11,5 @@ feign:
 services:
   user:
     url: 'http://localhost:9091'
+  command:
+    url: 'http://localhost:9092'

@@ -15,6 +15,61 @@
 	<properties>
 		<maven.compiler.source>17</maven.compiler.source>
 		<maven.compiler.target>17</maven.compiler.target>
+		<spring-boot-starter-web.version>2.7.5</spring-boot-starter-web.version>
+		<jib.maven.plugin.version>3.3.1</jib.maven.plugin.version>
 	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+			<version>${spring-boot-starter-web.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.amazonaws</groupId>
+			<artifactId>aws-java-sdk-sqs</artifactId>
+			<version>1.12.362</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>${lombok.version}</version>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>com.google.cloud.tools</groupId>
+				<artifactId>jib-maven-plugin</artifactId>
+				<version>${jib.maven.plugin.version}</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>dockerBuild</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<from>
+						<image>openjdk:17-bullseye</image>
+					</from>
+					<to>
+						<image>tms-api-gateway</image>
+						<tags>
+							<tag>latest</tag>
+						</tags>
+					</to>
+					<container>
+						<creationTime>USE_CURRENT_TIMESTAMP</creationTime>
+					</container>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 
 </project>

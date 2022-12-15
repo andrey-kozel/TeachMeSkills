@@ -16,6 +16,10 @@ public class UserService {
   private final AtomicLong idSequence = new AtomicLong();
   private final List<UserDto> users = new ArrayList<>();
 
+  public List<UserDto> getAll() {
+    return users;
+  }
+
   public UserDto get(final Long userId) {
     return users.stream()
       .filter(u -> u.getId().equals(userId))

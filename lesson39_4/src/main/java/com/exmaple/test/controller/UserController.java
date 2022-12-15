@@ -1,5 +1,7 @@
 package com.exmaple.test.controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import com.exmaple.test.dto.UpdateUserDto;
@@ -27,6 +29,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
 
   private final UserService userService;
+
+  @GetMapping
+  public List<UserDto> getAll() {
+    return userService.getAll();
+  }
 
   @GetMapping("/{userId}")
   public UserDto get(@PathVariable final Long userId) {

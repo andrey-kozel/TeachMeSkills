@@ -8,6 +8,10 @@ class UserService {
     return response.data;
   }
 
+  async saveUser(user: any): Promise<void> {
+    await axios.post<Array<User>>('http://localhost:8080/api/v1/users', user);
+  }
+
 }
 
 export default new UserService();

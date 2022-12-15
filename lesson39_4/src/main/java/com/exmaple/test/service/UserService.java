@@ -16,6 +16,27 @@ public class UserService {
   private final AtomicLong idSequence = new AtomicLong();
   private final List<UserDto> users = new ArrayList<>();
 
+  public UserService() {
+    users.add(UserDto.builder()
+        .id(idSequence.incrementAndGet())
+        .firstName("user1")
+        .lastName("user1")
+        .password("user1")
+      .build());
+    users.add(UserDto.builder()
+      .id(idSequence.incrementAndGet())
+      .firstName("user2")
+      .lastName("user2")
+      .password("user2")
+      .build());
+    users.add(UserDto.builder()
+      .id(idSequence.incrementAndGet())
+      .firstName("user3")
+      .lastName("user3")
+      .password("user3")
+      .build());
+  }
+
   public List<UserDto> getAll() {
     return users;
   }

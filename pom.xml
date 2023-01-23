@@ -41,6 +41,7 @@
 		<module>lesson41/command-service</module>
 		<module>lesson41/user-service</module>
 		<module>lesson45</module>
+		<module>lesson49</module>
 	</modules>
 
 	<properties>

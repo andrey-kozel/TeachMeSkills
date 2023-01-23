@@ -14,7 +14,7 @@ public class ForkFirstThread implements Runnable {
   public void run() {
     System.out.println("I would like to eat");
     synchronized (fork) {
-      System.out.println("I've fork");
+      System.out.println("I've got fork");
       try {
         Thread.sleep(1000);
       } catch (InterruptedException e) {

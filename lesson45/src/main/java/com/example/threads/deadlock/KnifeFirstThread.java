@@ -14,7 +14,7 @@ public class KnifeFirstThread implements Runnable {
   public void run() {
     System.out.println("I would like to eat");
     synchronized (knife) {
-      System.out.println("I've knife");
+      System.out.println("I've got knife");
       try {
         Thread.sleep(1000);
       } catch (InterruptedException e) {

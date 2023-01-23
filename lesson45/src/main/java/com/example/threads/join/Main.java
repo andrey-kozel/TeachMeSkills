@@ -13,6 +13,7 @@ public class Main {
 
     try {
       thread1.join();
+      System.out.println("Thread1 finished. Thread: " + Thread.currentThread().getName());
     } catch (InterruptedException e) {
       e.printStackTrace();
     }

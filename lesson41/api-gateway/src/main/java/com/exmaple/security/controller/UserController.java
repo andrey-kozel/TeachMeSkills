@@ -32,7 +32,7 @@ public class UserController {
     return userService.saveUser(user);
   }
 
-  @PostMapping("/auth")
+  @PostMapping("/auth2")
   public ResponseEntity authorize(@RequestBody final CredentialsDto credentials) {
     final VerifyResultDto result = userService.verifyUser(credentials.getUsername(), credentials.getPassword());
 

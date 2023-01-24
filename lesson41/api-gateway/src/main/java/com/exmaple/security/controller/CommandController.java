@@ -16,7 +16,7 @@ public class CommandController {
   private final CommandClient commandClient;
 
   @ResponseStatus(HttpStatus.ACCEPTED)
-  @PostMapping("/hello")
+  @PostMapping("/hello2")
   public void sendHello() {
     commandClient.sendHello();
   }

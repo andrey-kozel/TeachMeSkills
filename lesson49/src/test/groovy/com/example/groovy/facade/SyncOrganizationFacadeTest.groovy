@@ -27,7 +27,7 @@ class SyncOrganizationFacadeTest extends Specification {
     private StatsPublishService<RepositoryStatsDto> statsPublishService = Mock()
     private TaskClient taskClient = Mock()
 
-    def sus = new SyncOrganizationFacade(syncOrganizationService, statsPublishService, taskClient)
+    def sut = new SyncOrganizationFacade(syncOrganizationService, statsPublishService, taskClient)
 
     void setup() {
         taskClient.createTask(_, _) >> Mock(TaskDto)
@@ -42,8 +42,10 @@ class SyncOrganizationFacadeTest extends Specification {
         final TaskDto task = TaskDto.builder()
                 .id(ANY_UUID)
                 .build()
+
         when:
-        sus.syncRepos(command)
+        sut.syncRepos(command)
+
         then:
         1 * taskClient.createTask(ORGANIZATION_UUID, TaskType.SYNC_ORGANIZATION) >> task
     }
@@ -55,7 +57,8 @@ class SyncOrganizationFacadeTest extends Specification {
                 .token(TOKEN)
                 .build()
         when:
-        sus.syncRepos(command)
+        sut.syncRepos(command)
+
         then:
         1 * syncOrganizationService.synchronizeRepositories(ORGANIZATION_UUID, TOKEN, {
             assert it.affiliation == "owner"
@@ -68,8 +71,10 @@ class SyncOrganizationFacadeTest extends Specification {
         given:
         final List<RepositoryStatsDto> dtos = Collections.nCopies(LESS_THAN_PAGE_SIZE, ANY_REPOSITORY);
         syncOrganizationService.synchronizeRepositories(_, _, _) >>> [dtos]
+
         when:
-        sus.syncRepos(ANY_COMMAND)
+        sut.syncRepos(ANY_COMMAND)
+
         then:
         1 * statsPublishService.publishMessages(ConnectorType.GITHUB_REPOSITORY_STATS, dtos)
     }
@@ -78,8 +83,10 @@ class SyncOrganizationFacadeTest extends Specification {
         given:
         final List<RepositoryStatsDto> dtos = Collections.nCopies(DEFAULT_PAGE_SIZE, ANY_REPOSITORY);
         syncOrganizationService.synchronizeRepositories(_, _, _) >>> [dtos, [ANY_REPOSITORY]]
+
         when:
-        sus.syncRepos(ANY_COMMAND)
+        sut.syncRepos(ANY_COMMAND)
+
         then:
         1 * syncOrganizationService.synchronizeRepositories(_, _, {
             assert it.page == 2
@@ -92,8 +99,10 @@ class SyncOrganizationFacadeTest extends Specification {
                 .id(TASK_UUID)
                 .build()
         syncOrganizationService.synchronizeRepositories(_, _, _) >> []
+
         when:
-        sus.syncRepos(ANY_COMMAND)
+        sut.syncRepos(ANY_COMMAND)
+
         then:
         1 * taskClient.createTask(_, _) >> task
         1 * taskClient.updateTask(TASK_UUID, TaskStatus.COMPLETED)
@@ -105,8 +114,10 @@ class SyncOrganizationFacadeTest extends Specification {
                 .id(TASK_UUID)
                 .build()
         syncOrganizationService.synchronizeRepositories(_, _, _) >> { throw new RuntimeException("Sync failed") }
+
         when:
-        sus.syncRepos(ANY_COMMAND)
+        sut.syncRepos(ANY_COMMAND)
+
         then:
         1 * taskClient.createTask(_, _) >> task
         1 * taskClient.updateTask(TASK_UUID, TaskStatus.FAILED)

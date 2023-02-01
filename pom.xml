@@ -42,6 +42,7 @@
 		<module>lesson41/user-service</module>
 		<module>lesson45</module>
 		<module>lesson49</module>
+		<module>lesson52</module>
 	</modules>
 
 	<properties>

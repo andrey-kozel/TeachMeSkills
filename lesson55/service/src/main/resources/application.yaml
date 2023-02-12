@@ -1,3 +1,11 @@
+server:
+  ssl:
+    key-store: classpath:keys/springboot.p12
+    key-store-password: password
+    key-store-type: pkcs12
+    key-alias: springboot
+    key-password: password
+
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver

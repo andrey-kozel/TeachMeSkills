@@ -1,5 +1,7 @@
 package com.example.elastic.service;
 
+import java.util.List;
+
 import com.example.elastic.model.AppUser;
 import com.example.elastic.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -33,5 +35,9 @@ public class UserService {
     }
 
     throw new IllegalStateException("Provided wrong password for user " + username);
+  }
+
+  public List<AppUser> findUserByIds(final List<Long> ids) {
+    return userRepository.findByUserIds(ids);
   }
 }

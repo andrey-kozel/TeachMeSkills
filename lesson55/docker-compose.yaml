@@ -10,3 +10,11 @@ services:
       - "35432:5432"
     volumes:
       - "./dev-env/postgres/init.sql:/docker-entrypoint-initdb.d/1-init.sql"
+
+  elastic:
+    image: elasticsearch:7.17.9
+    container_name: demo-elastic
+    ports:
+      - 9200:9200
+    environment:
+      discovery.type: single-node

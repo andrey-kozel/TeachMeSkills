@@ -9,5 +9,6 @@ public class UserDto {
 
   long id;
   String username;
+  String description;
 
 }

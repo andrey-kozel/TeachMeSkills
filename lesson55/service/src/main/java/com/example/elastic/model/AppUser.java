@@ -20,4 +20,6 @@ public class AppUser {
   String username;
 
   String password;
+
+  String description;
 }

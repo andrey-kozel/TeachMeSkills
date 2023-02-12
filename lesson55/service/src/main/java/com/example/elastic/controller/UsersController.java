@@ -1,7 +1,10 @@
 package com.example.elastic.controller;
 
+import com.example.elastic.config.jwt.Jwt;
 import com.example.elastic.converter.UserConverter;
+import com.example.elastic.dto.AuthorizeUserDto;
 import com.example.elastic.dto.CreateUserDto;
+import com.example.elastic.dto.TokenDto;
 import com.example.elastic.dto.UserDto;
 import com.example.elastic.model.AppUser;
 import com.example.elastic.service.UserService;
@@ -18,6 +21,7 @@ public class UsersController {
 
   private final UserService userService;
   private final UserConverter userConverter;
+  private final Jwt jwt;
 
   @PostMapping
   public UserDto save(@RequestBody final CreateUserDto request) {
@@ -25,5 +29,15 @@ public class UsersController {
     final AppUser savedUser = userService.save(user);
     return userConverter.toDto(savedUser);
   }
+
+  @PostMapping("auth")
+  public TokenDto authorize(@RequestBody final AuthorizeUserDto request) {
+    final AppUser user = userService.verifyUser(request.getUsername(), request.getPassword());
+    final String accessToken = jwt.generateToken(user.getUsername());
+    return TokenDto.builder()
+      .accessToken(accessToken)
+      .build();
+  }
+
 
 }

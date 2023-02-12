@@ -28,7 +28,7 @@ public class UserService {
   public AppUser verifyUser(final String username, final String password) {
     final AppUser appUser = userRepository.get(username);
 
-    if (passwordEncoder.matches(appUser.getPassword(), password)) {
+    if (passwordEncoder.matches(password, appUser.getPassword())) {
       return appUser;
     }
 

@@ -1,6 +1,5 @@
 package com.example.elastic.config.elastic;
 
-import java.util.stream.IntStream;
 import java.util.stream.LongStream;
 
 import javax.annotation.PostConstruct;
@@ -18,13 +17,13 @@ public class ElasticsearchTestConfig {
 
   @PostConstruct
   public void init() {
-    LongStream.range(1, 200)
-        .mapToObj(i -> AppUser.builder()
-          .username("user" + i)
-          .password("password" + i)
-          .description("my awesome user" + i)
-          .build())
-      .forEach(userFacade::save);
+//    LongStream.range(1, 200)
+//        .mapToObj(i -> AppUser.builder()
+//          .username("user" + i)
+//          .password("password" + i)
+//          .description("my awesome user" + i)
+//          .build())
+//      .forEach(userFacade::save);
   }
 
 }

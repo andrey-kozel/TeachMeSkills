@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.elasticsearch.client.ClientConfiguration;
 import org.springframework.data.elasticsearch.client.elc.ElasticsearchConfiguration;
-import org.springframework.http.HttpHeaders;
 
 @Configuration
 public class ElasticsearchConfig extends ElasticsearchConfiguration {
@@ -17,12 +16,8 @@ public class ElasticsearchConfig extends ElasticsearchConfiguration {
 
   @Override
   public ClientConfiguration clientConfiguration() {
-    final HttpHeaders httpHeaders = new HttpHeaders();
-    httpHeaders.add("Content-type", "application/json");
-    httpHeaders.add("X-Elastic-Product", "Example");
     return ClientConfiguration.builder()
       .connectedTo(elasticsearchUrl)
-      .withDefaultHeaders(httpHeaders)
       .build();
   }
 }

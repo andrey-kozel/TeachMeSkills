@@ -14,7 +14,7 @@ function App() {
 
   return (
     <div className="App">
-      <img src={`data:image/jpeg;base64,${image}`} />
+      <img src={`data:image/png;base64,${image}`} />
     </div>
   );
 }

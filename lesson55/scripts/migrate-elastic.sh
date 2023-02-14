@@ -1,11 +1,11 @@
 #!/bin/bash
 set -e
 
-curl -w '\n' -X PUT http://localhost:9200/users_1 -H 'Content-Type: application/json' -d @- <<REQUEST_BODY
+curl -w '\n' -X PUT http://localhost:9200/users_2 -H 'Content-Type: application/json' -d @- <<REQUEST_BODY
     {
       "settings" : {
         "index" : {
-          "number_of_shards" : 2,
+          "number_of_shards" : 1,
           "number_of_replicas" : 1
         }
       },

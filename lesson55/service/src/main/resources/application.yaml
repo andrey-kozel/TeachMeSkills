@@ -19,7 +19,3 @@ spring:
 
 elastic:
   url: localhost:9200
-
-logging:
-  level:
-    root: DEBUG

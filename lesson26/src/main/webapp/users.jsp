@@ -95,6 +95,7 @@
             </div>
         </div>
     </c:if>
+    <jsp:include page="footer.jsp"></jsp:include>
 </div>
 </body>
 </html>

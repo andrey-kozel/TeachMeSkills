@@ -44,6 +44,7 @@
 		<module>lesson49</module>
 		<module>lesson52</module>
 		<module>lesson55/service</module>
+		<module>lesson57/main</module>
 	</modules>
 
 	<properties>

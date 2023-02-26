@@ -12,10 +12,19 @@ spring:
     username: postgres
     password: postgres
     url: jdbc:postgresql://localhost:35432/postgres
-
+  servlet:
+    multipart:
+      max-file-size: -1
+      max-request-size: -1
+      file-size-threshold: 1048576
+      location: '/tmp'
   mvc:
     pathmatch:
       matching-strategy: ant_path_matcher
 
 elastic:
   url: localhost:9200
+
+logging:
+  level:
+    root: DEBUG

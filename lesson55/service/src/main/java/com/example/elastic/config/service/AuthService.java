@@ -1,5 +1,6 @@
 package com.example.elastic.config.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.example.elastic.model.AppUser;
